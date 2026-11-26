@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Kibiko SDA Church{% endblock %}
+
+{% block content %}
+<style>
+    /* Styling to blend with the global base template */
+    .hero {
+        background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), #1a365d;
+        color: white;
+        padding: 70px 20px;
+        text-align: center;
+        border-radius: 0 0 12px 12px;
+    }
+    .hero h2 {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    .hero .subtitle {
+        font-size: 20px;
+        color: #e2e8f0;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: -30px; /* Overlaps hero for a modern layered effect */
+    }
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .card h3 {
+        color: #1a365d;
+        margin-top: 0;
+        font-size: 22px;
+    }
+    .card p {
+        color: #4a5568;
+        line-height: 1.5;
+    }
+    .cta-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 40px 0 20px;
+    }
+    .btn {
+        padding: 12px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: opacity 0.2s;
+    }
+    .btn.primary {
+        background: #f6ad55;
+        color: #1a365d;
+    }
+    .btn.secondary {
+        background: #1a365d;
+        color: white;
+    }
+    .btn:hover {
+        opacity: 0.9;
+    }
+</style>
+
+<section class="hero">
+    <h2>Welcome to Kibiko SDA Church 🙏</h2>
+    <p class="subtitle"><strong>Happy Sabbath!</strong> Join us every Saturday: 8:00 AM – 12:30 PM</p>
+</section>
+
+<div class="container" style="max-width: 1100px; margin: auto; padding: 0 20px;">
+    <div class="grid">
+        <div class="card">
+            <h3>🙏 Worship</h3>
+            <p>Join us every Sabbath for Divine Service, Sabbath School, and praise.</p>
+        </div>
+        <div class="card">
+            <h3>📅 Events</h3>
+            <p>Stay updated with our mid-week prayers, camp meetings, and church activities.</p>
+        </div>
+        <div class="card">
+            <h3>👥 9 Ministries</h3>
+            <p>Discover our active church ministries and find a place to serve.</p>
+        </div>
+    </div>
+
+    <div class="cta-actions">
+        <a class="btn primary" href="/groups">View Ministries</a>
+        <a class="btn secondary" href="/calendar">View Calendar</a>
+    </div>
+</div>
+{% endblock %}

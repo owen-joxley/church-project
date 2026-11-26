@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Member Login - Kibiko SDA Church{% endblock %}
+
+{% block content %}
+<style>
+    body { background-color: #edf2f7; }
+    .auth-container {
+        max-width: 420px;
+        margin: 50px auto;
+        background: white;
+        padding: 35px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    .auth-container h1 {
+        color: #1a365d;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-size: 28px;
+    }
+    .form-group {
+        margin-bottom: 18px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        color: #2d3748;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cbd5e0;
+        border-radius: 6px;
+        font-size: 15px;
+        box-sizing: border-box;
+        transition: border-color 0.2s;
+    }
+    .form-control:focus {
+        outline: none;
+        border-color: #1a365d;
+    }
+    .btn-submit {
+        width: 100%;
+        background: #1a365d;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-top: 10px;
+    }
+    .btn-submit:hover {
+        background: #2b6cb0;
+    }
+    .auth-footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #718096;
+    }
+    .auth-footer a {
+        color: #f6ad55;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .auth-footer a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <div class="auth-container">
+        <h1>🔐 Member Login</h1>
+
+        <form action="/login" method="POST">
+            {% if csrf_token %}
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            {% endif %}
+
+            <div class="form-group">
+                <label for="email">Email Address or Member ID</label>
+                <input type="text" id="email" name="username" class="form-control" placeholder="e.g. member@kibikosda.org" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Login to Account</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Don't have an account? <a href="/register">Register here</a></p>
+            <p style="margin-top: 5px;"><a href="/dashboard" style="color: #718096; font-weight: normal; text-decoration: underline;">Demo: Skip to Dashboard &rarr;</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

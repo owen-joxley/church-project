@@ -1,0 +1,5 @@
+body{font-family:Arial;background:#61a100;margin:0}
+nav{background:#2c5f2d;color:rgb(0, 0, 0);padding:12px;display:flex;gap:15px}
+nav a{color:rgb(162, 55, 151);text-decoration:none}
+.container{padding:20px;max-width:1000px;margin:auto}
+.card{background:rgb(182, 128, 71);padding:15px;border-radius:10px;margin:10px 0;box-shadow:0 2px 5px rgba(0,0,0,0.1)}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ group.name|default:'Ministry Details' }} - Kibiko SDA Church{% endblock %}
+
+{% block content %}
+<style>
+    body { background-color: #edf2f7; }
+    .detail-card {
+        max-width: 700px;
+        margin: 40px auto;
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    .detail-card h1 {
+        color: #1a365d;
+        margin-top: 0;
+        border-bottom: 3px solid #f6ad55;
+        padding-bottom: 10px;
+        font-size: 32px;
+    }
+    .info-group {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 16px;
+        color: #2d3748;
+    }
+    .info-item strong {
+        color: #1a365d;
+        min-width: 110px;
+    }
+    .badge {
+        background: #e2e8f0;
+        color: #2d3748;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .btn-container {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+    }
+    .btn-secondary {
+        background: #718096;
+        color: white;
+        padding: 10px 22px;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: #4a5568; }
+    .btn-join {
+        background: #f6ad55;
+        color: #1a365d;
+        padding: 10px 22px;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container">
+    <div class="detail-card">
+        <h1>👥 {{ group.name|default:'Youth Ministry' }}</h1>
+
+        <div class="info-group">
+            <div class="info-item">
+                <strong>📅 Meeting:</strong>
+                <span>{{ group.meeting_time|default:'Friday 5:00 PM at Main Hall' }}</span>
+            </div>
+            <div class="info-item">
+                <strong>👤 Leader:</strong>
+                <span>{{ group.leader_name|default:'Bro. John' }} — <a href="tel:{{ group.leader_phone|default:'0722123456' }}" style="color: #2b6cb0; font-weight: bold;">{{ group.leader_phone|default:'0722 123456' }}</a></span>
+            </div>
+            <div class="info-item">
+                <strong>🎯 Focus:</strong>
+                <span>{{ group.description|default:'Bible study, spiritual growth, and community service in Kibiko.' }}</span>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="/groups" class="btn-secondary">&larr; Back to Groups</a>
+            <a href="/groups/join/{{ group.id|default:'1' }}" class="btn-join">Join Ministry</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body { background: #edf2f7; }
+        .top-bar { background: white; padding: 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 10px; }
+        .card h3 { border-bottom: 2px solid #1a365d; padding-bottom: 10px; }
+        .stat { font-size: 32px; color: #1a365d; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>Kibiko SDA - Member Area</h2>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/groups">My Groups</a>
+        <a href="/">Logout</a>
+    </nav>
+    <div class="container" style="background: transparent;">
+        <div class="top-bar">
+            <div><h2 style="margin:0;">Welcome Back, Bro. Joxley!</h2><p style="margin:0;">Member ID: KIB-001 | Sabbath School Class: Paul</p></div>
+            <div style="background: green; color: white; padding: 5px 15px; border-radius: 20px;">Active Member</div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>My Stats</h3>
+                <p>Groups Joined: <span class="stat">3</span></p>
+                <p>Sabbaths Attended: <span class="stat">42</span></p>
+                <a href="/groups">View My Groups</a>
+            </div>
+            <div class="card">
+                <h3>My Tithe Record</h3>
+                <p>Last Month: KES 2,000</p>
+                <p>This Month: <strong>KES 1,500</strong></p>
+                <p style="color: green;">Faithful ✓</p>
+            </div>
+            <div class="card">
+                <h3>Next Duty</h3>
+                <p><strong>Sabbath:</strong> You are on Offering Duty</p>
+                <p><strong>Time:</strong> Saturday 10:30 AM</p>
+                <p>Be early at church!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

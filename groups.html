@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+
+{% block title %}Ministries & Groups - Kibiko SDA Church{% endblock %}
+
+{% block content %}
+<style>
+    body { background-color: #edf2f7; }
+    .groups-header {
+        text-align: center;
+        margin: 30px 0 40px;
+    }
+    .groups-header h1 {
+        color: #1a365d;
+        margin-bottom: 10px;
+        font-size: 36px;
+    }
+    .groups-header p {
+        color: #4a5568;
+        font-size: 18px;
+    }
+    .group-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+    .group-card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        border-left: 6px solid #1a365d;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .group-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+    .group-card h3 {
+        margin-top: 0;
+        color: #1a365d;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .group-info {
+        color: #4a5568;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+    .group-meta {
+        font-size: 14px;
+        color: #718096;
+        margin-bottom: 20px;
+        background: #f7fafc;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+    .btn-group {
+        background: #1a365d;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        display: inline-block;
+        transition: background 0.2s;
+    }
+    .btn-group:hover {
+        background: #2b6cb0;
+    }
+</style>
+
+<div class="container" style="max-width: 1100px; margin: auto; padding: 0 20px;">
+    <div class="groups-header">
+        <h1>⛪ Church Ministries</h1>
+        <p>Find your place to serve, connect, and grow at Kibiko SDA Church</p>
+    </div>
+
+    <div class="group-grid">
+        {% if groups %}
+            {# Dynamic backend loop if passing a list of groups from Flask/Django #}
+            {% for group in groups %}
+            <div class="group-card">
+                <div>
+                    <h3>{{ group.icon|default:'👥' }} {{ group.name }}</h3>
+                    <p class="group-info">{{ group.description }}</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> {{ group.leader_name }}<br>
+                        <strong>Meeting:</strong> {{ group.meeting_time }}
+                    </div>
+                </div>
+                <a href="/groups/{{ group.id }}" class="btn-group">View Details</a>
+            </div>
+            {% endfor %}
+        {% else %}
+            {# Hardcoded fallback list showing the 9 core SDA Ministries #}
+            <div class="group-card">
+                <div>
+                    <h3>🚀 Youth Ministry (AY)</h3>
+                    <p class="group-info">Empowering young people ages 13–35 in Christian leadership and service.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Bro. John | 45 Members<br>
+                        <strong>Meeting:</strong> Friday 5:00 PM
+                    </div>
+                </div>
+                <a href="/groups/1" class="btn-group">View Details</a>
+            </div>
+
+            <div class="group-card">
+                <div>
+                    <h3>👩 Dorcas / Adventist Women</h3>
+                    <p class="group-info">Community outreach, welfare, visiting the sick, and supporting families.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Sr. Grace | 60 Members<br>
+                        <strong>Meeting:</strong> Wednesday 2:00 PM
+                    </div>
+                </div>
+                <a href="/groups/2" class="btn-group">View Details</a>
+            </div>
+
+            <div class="group-card">
+                <div>
+                    <h3>📖 Sabbath School</h3>
+                    <p class="group-info">Systematic Bible study, fellowship, and mission emphasis every Sabbath.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Elder Kamau | 120 Members<br>
+                        <strong>Meeting:</strong> Saturday 8:00 AM
+                    </div>
+                </div>
+                <a href="/groups/3" class="btn-group">View Details</a>
+            </div>
+
+            <div class="group-card">
+                <div>
+                    <h3>🎵 Music & Choir</h3>
+                    <p class="group-info">Leading the congregation in worship through songs, choruses, and choir praise.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Sr. Ann | 25 Members<br>
+                        <strong>Meeting:</strong> Saturday 2:00 PM
+                    </div>
+                </div>
+                <a href="/groups/4" class="btn-group">View Details</a>
+            </div>
+
+            <div class="group-card">
+                <div>
+                    <h3>👨 Adventist Men's Organization (AMO)</h3>
+                    <p class="group-info">Uniting men in spiritual growth, family leadership, and church projects.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Bro. Peter | 40 Members<br>
+                        <strong>Meeting:</strong> Last Sunday of Month 8:00 AM
+                    </div>
+                </div>
+                <a href="/groups/5" class="btn-group">View Details</a>
+            </div>
+
+            <div class="group-card">
+                <div>
+                    <h3>🍎 Health Ministry</h3>
+                    <p class="group-info">Promoting healthy living, wellness seminars, and community medical camps.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Dr. Mary | 18 Members<br>
+                        <strong>Meeting:</strong> 2nd Sabbath 2:30 PM
+                    </div>
+                </div>
+                <a href="/groups/6" class="btn-group">View Details</a>
+            </div>
+
+            <div class="group-card">
+                <div>
+                    <h3>👶 Children's Ministry</h3>
+                    <p class="group-info">Nurturing children (ages 0–12) with biblical values and fun Sabbath activities.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Sr. Eunice | 85 Children<br>
+                        <strong>Meeting:</strong> Saturday 9:00 AM
+                    </div>
+                </div>
+                <a href="/groups/7" class="btn-group">View Details</a>
+            </div>
+
+            <div class="group-card">
+                <div>
+                    <h3>🌍 Personal Ministries & Evangelism</h3>
+                    <p class="group-info">Organizing door-to-door evangelism, Bible studies, and community missions.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Elder Joseph | 30 Members<br>
+                        <strong>Meeting:</strong> Sunday 4:00 PM
+                    </div>
+                </div>
+                <a href="/groups/8" class="btn-group">View Details</a>
+            </div>
+
+            <div class="group-card">
+                <div>
+                    <h3>🤝 Development & Welfare</h3>
+                    <p class="group-info">Managing church building projects, infrastructure, and member emergency aid.</p>
+                    <div class="group-meta">
+                        <strong>Leader:</strong> Bro. David | 22 Members<br>
+                        <strong>Meeting:</strong> 1st Sunday of Month 9:00 AM
+                    </div>
+                </div>
+                <a href="/groups/9" class="btn-group">View Details</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
